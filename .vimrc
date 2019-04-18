@@ -161,3 +161,4 @@ set mouse=a
 "24 Mar:
 set clipboard=unnamed
 colorscheme gruvbox " color scheme
+set textwidth=0
