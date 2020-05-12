@@ -162,3 +162,4 @@ set mouse=a
 set clipboard=unnamed
 colorscheme gruvbox " color scheme
 set textwidth=0
+" Trial
