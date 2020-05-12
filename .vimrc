@@ -213,7 +213,7 @@ set bg=light
 
 map <F6> ma?^\s*\<module\><CR>Wyiw'a:echo "module -->" @0<CR>
 
-"NEW MAPPINGS PERTAINING TO VIM8.1 updatea
+"NEW MAPPINGS PERTAINING TO VIM8.1 update
 command! T :terminal
 
 " --> FUNCTION KEY MAPPINGS
@@ -237,7 +237,6 @@ nnoremap <F9> :se tags=./tags;/<CR>
 
 " This is for the typical file-types : 
 " Trick is not to use setfiletype
-
 augroup filetypedetect
   autocmd BufRead,BufNewFile *.v,*.vh,*.sv,*.svh,*.w,*.wh,*.sw,*.svpp :set filetype=systemverilog
   autocmd BufRead,BufNewFile *.vhd,*.whd :set filetype=vhdl
