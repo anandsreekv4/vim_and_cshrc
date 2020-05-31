@@ -1,0 +1,162 @@
+alias a alias
+alias s set
+alias hd1 'head -1'
+alias hd3 'head -3'
+
+#QT
+alias xdebug 'bsub -q sj-M32hnd -R r64bit make xeDebug &'
+
+#alias galdiff 'gvimdiff \!\!:1 `pwd | sed -e "s#_.*/work/[^/]*/[^/]*#/gallery#g"`/\!\!:1'
+alias galdiff 'gvimdiff \!\!:1 `pwd | sed -e "s/gallery_[^/]*/gallery_frontend/" | sed -e "s#_.*/work/[^/]*/[^/]*/BCM4349/#/gallery_frontend/#g" | sed -e "s#_.*/work/[^/]*/[^/]*#/gallery_frontend#g"`/\!\!:1'
+alias galbdiff 'gvimdiff \!\!:1 `pwd | sed -e "s/gallery_[^/]*/gallery_backend/"  | sed -e "s#_.*/work/[^/]*/[^/]*#/gallery_backend#g"`/\!\!:1'
+alias vd 'gvim -R -d'
+alias v '/gpfs/iot/projects/BCM4373_ext12_scratch/tool_install/bin/gvim'
+
+alias sal 'source ~/.alias'
+
+alias rstg 'cd `pwd | sed -e "s/gallery_[^/]*/gallery_backend/" | sed -e "s#_.*/work/[^/]*/[^/]*/BCM4349#/gallery_backend/#g" | sed -e "s#_.*/work/[^/]*/[^/]*#/gallery_backend#g"` ; set commit = `git log HEAD  -1 --pretty=format:%h`; cd - ; git reset --hard $commit'
+
+#echo `pwd |  sed -e "s#_.*/work/[^/]*/[^/]*/BCM4349#/gallery_frontend/#g"`
+alias ll ls -ltrah
+alias lspwd  'ls -ltrah `pwd`/\!*'
+alias lpwd  'ls -l `pwd`/\!*'
+
+alias gitg "/projects/hnd/tools/linux/bin/gitg >& /dev/null &" 
+alias gb 'git branch -v'
+alias gd 'git diff'
+alias gds 'git diff --stat'
+alias gdom 'git diff origin/master'
+alias gdsom 'git diff --stat origin/master'
+alias gfl 'git fetch ; git lola'
+alias gfl5 'git fetch ; git lola | head -5'
+alias gfl10 'git fetch ; git lola | head -10'
+alias gfl20 'git fetch ; git lola | head -20'
+alias gp 'git pull'
+alias gl 'git lol'
+#alias gl1 'git lol HEAD..\!\!:1'
+#alias gl2 'git lol \!\!:1..HEAD'
+alias gl1 'git lol | head -1'
+alias gl5 'git lol | head -5'
+alias gl10 'git lol | head -10'
+alias gl20 'git lol | head -20'
+alias gt 'git_treeconfig'
+alias gc 'git checkout'
+alias mst 'mgit status -u no'
+alias gst 'git status -u no'
+alias grst 'git reset --hard'
+set tmp = "--format=%(upstream:short)"
+alias gremot 'set remote = `git symbolic-ref -q HEAD` ; set org_branch = `git for-each-ref $tmp $remote`'
+alias grsto 'gremot; git reset --hard $org_branch'
+alias glo 'gremot ; gl HEAD..$org_branch'
+alias gflo 'git fetch ; glo'
+alias gdo 'gremot ; git d HEAD..$org_branch'
+alias gdso 'gremot ; gds HEAD..$org_branch'
+#alias gremot 'set remote = `git symbolic-ref -q HEAD` ;git for-each-ref --format='%\(upstream:short\)' $remote'
+
+
+a	12 'cd /projects/BCM43012_ext2_scratch/work/akilakp/'
+a	64 'cd /projects/BCM4364_ext/work/akilakp/'
+a	49 'cd /projects/BCM4349_ext/work/akilakp/'
+a	45 'cd /projects/BCM4345/work/akilakp/BCM4345'
+a	602 'cd /projects/BCM43602/work/akilakp/BCM43602'
+a	tot 'cd /projects/BCM4349_ext4/work/srk/TOT'
+a	ban 'ftp xlinux.ban.broadcom.com'
+a	irv 'ftp xlinux.irv.broadcom.com'
+a	d	date
+a	bj 'bjobs | gv reg | gv Ihnd | gv regress'
+a     m           more
+a     c           clear
+
+s g35 = "/projects/BCM4335/gallery" 
+s g45 = "/projects/BCM4345/gallery_frontend" 
+s g64 = "/projects/BCM4364/gallery_frontend" 
+s g12 = "/projects/BCM43012/gallery_frontend" 
+s g49 = "/projects/BCM4349/gallery_frontend" 
+s gal = "/projects/BCM4349/gallery_frontend" 
+s galb = "/projects/BCM4349/gallery_backend" 
+s g50 = "/projects/BCM4350/gallery_frontend" 
+
+alias b 'bsub -I -q normal'
+
+a     cls         clear
+a     cp          'cp -p -i'
+a	cpt	'cp -p -i --preserve=timestamps'
+
+a	grep 	'grep --color=always'
+a     	gi	grep -i --color=always
+a	gv	grep -v
+a	gr 	'grep -r --color=always'
+
+a      h 	  history
+a	l 	  ls -al -t -r -h
+a 	e 	gvim	
+a 	ec echo
+a	v      gvim -bg black
+a	g      gvim -bg black
+a	va	v ~/.alias
+a	sa	source ~/.alias
+a	bk	cd -
+a	-	cd -
+a	.	cd ..
+a	..	cd ../../
+a	...	cd ../../../
+a	dif	tkdiff
+a	kil	bkill 
+a 	fnd	'find \:1 -name "\:2"'
+a	ak	"awk '{print $2}'"
+a	up	cvs up
+a	clb	gmake clobber
+a	com	gmake compile RTL_TOOL=ncsim
+a	nov	gmake compile RTL_TOOL=novas
+a 	wav	gmake RTL_TOOL=ncsim
+a	gamke	gmake
+a	clball  gmake ClobberAll
+
+alias gmake38d '/home/maharana/local/bin/make --debug=e,r,c'
+alias gmake38v '/home/maharana/local/bin/make --debug=e,r,c,v'
+alias gverdi   'bsub -I -q normal gmake RTL_TOOL=novas configsim.debussy COMP64=1 &'
+alias gmfe   'gmake RTL_TOOL=mti force-elaborate |& tee gmfe.log'
+alias gmce   'gmake RTL_TOOL=mti compile |& tee mti.log ; gmake RTL_TOOL=mti elaborate |tee -a mti.log'
+alias gno   'bsub -I gmake RTL_TOOL=novas compile COMP64=1'
+alias gn   'gmake RTL_TOOL=ncsim '
+alias gmc   'bsub -I gmake RTL_TOOL=mti compile COMP64=1 MTI_USE_LATEST=1 |& tee gmc.log'
+alias gnc   'bsub -I  gmake RTL_TOOL=ncsim compile COMP64=1 |& tee gnc.log'
+alias gncf   'bsub -I  gmake RTL_TOOL=ncsim compile COMP64=1 NO_CORE_RECOMPILE=1 NO_RTL_RECOMPILE=1 && rm -rf tsmc28hpm_ncsim_INCISIVE15.20.042_64/cds.lib && gmake tsmc28hpm_ncsim_INCISIVE15.20.042_64/cds.lib |& tee gnc.log'
+alias gncf_bt   'bsub -I  gmake RTL_TOOL=ncsim compile COMP64=1 NO_CORE_RECOMPILE=1 NO_RTL_RECOMPILE=1 STUB_BTFM=1 |& tee gnc.log'
+
+alias gnoc   'bsub -I gmake RTL_TOOL=novas compile COMP64=1 |& tee gnoc.log'
+alias g38vnc   'gmake38v RTL_TOOL=ncsim compile |& tee g38vnc.log'
+alias gncv   'gmake38v RTL_TOOL=ncsim compile |& tee gncv.log'
+alias gnc64   'gmake RTL_TOOL=ncsim COMP64=1 compile |& tee nc.log'
+alias gne   'bsub -I gmake RTL_TOOL=ncsim force-elab COMP64=1 |& tee gne.log'
+alias gme   'bsub -I gmake RTL_TOOL=mti elaborate COMP64=1  MTI_USE_LATEST=1 |& tee gme.log'
+alias gnfe   'bsub -I  gmake RTL_TOOL=ncsim force-elaborate COMP64=1 |& tee gnfe.log'
+alias gvc   'bsub -I -q normal gmake RTL_TOOL=vcs_mx compile COMP64=1 |& tee gvc.log'
+alias gve   'bsub -I -q normal gmake RTL_TOOL=vcs_mx elaborate COMP64=1 |& tee gve.log'
+alias gvce   'bsub -I -q normal gmake RTL_TOOL=vcs_mx compile COMP64=1 ; bsub -I -q normal gmake RTL_TOOL=vcs_mx elaborate COMP64=1'
+alias gnce   'bsub -I -q normal gmake RTL_TOOL=ncsim compile COMP64=1 |& tee nc.log; bsub -I -q normal gmake RTL_TOOL=ncsim force-elab COMP64=1 |& tee -a nc.log'
+alias gspy  'bsub -I gmake RTL_TOOL=spyglass compile | tee gspy.log'
+
+alias gf    'set wd=`pwd`;bsub -I -q normal_35 gmake file_list FILELIST_PREFIX=../design/`basename $wd` | & tee gf.log'
+alias g38f    'set wd=`pwd`;gmake38v file_list FILELIST_PREFIX=../design/`basename $wd`'
+alias gft   'set wd=`pwd`;gmake file_list FILELIST_PREFIX=../`basename $wd`'
+alias gr    'gmake MakeFileLists RealCompile'
+
+alias make_mti      "gmake compile | & tee compile.glog"
+alias make_ncsim    "gmake compile RTL_TOOL=ncsim | & tee ncsim_compile.glog"
+alias make_ncelab   "gmake elaborate RTL_TOOL=ncsim | & tee ncelab_compile.glog"
+alias make_novas    "gmake compile RTL_TOOL=novas | & tee novas_compile.glog"
+
+alias nomymake 'unalias make;unalias gmake;setenv MAKE /tools/bin/make;setenv PATH /tools/bin:$PATH'
+alias yesmymake 'setenv MAKE /home/smah/local/bin/make;setenv PATH /home/smah/local/bin:$PATH;alias make  mygmake;alias gmake mygmake'
+
+a	odx	od -A x -x --width=2 -v
+a	od4	od -A x -x --width=4 -v
+s	rx = "../../design/nphy_rx"
+s	tx = "../../design/nphy_tx"
+s	io = "../../design/nphy_io"
+s	 d = "../../design"
+a	zip 'tar -zcvf \:1.tar.gz \:1'
+#alias  cdl 'dirs -lv > /tmp/cdl ; cut -f1 /tmp/cdl | paste -d" " /tmp/cdl - ; rm /tmp/cdl'
+alias getlic_design 'lmstat -a -c /proj/lic_vault/golden/lic_vault/mgcld-design-prod-wan/license.dat -f mttestkompress_c'
+

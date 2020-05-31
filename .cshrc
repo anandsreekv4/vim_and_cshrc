@@ -1,46 +1,47 @@
-#
-# Default user .cshrc file
-# 
-# Usage:  Copy this file to a user's home directory and edit it to
-# customize it to taste.  It is run by csh each time it starts up.
-#
-# Modified 981209 jsin
-# Modified 981001 djo based on originals from dhynson 
-
-
 #source /tools/bin/common.cshrc
 source /tools/stabflow/iot/cshrc.iot
 
 limit coredumpsize 0
 
+################################################################################
+# General Env
+################################################################################
+setenv TERM screen-256color
+setenv SHELL /bin/tcsh
 setenv HOME2 /projects/work/ansn
 setenv EDITOR vi
 setenv PAGER less
 setenv LPDEST lp
-setenv TERM screen-256color
-#setenv PATH $HOME2/python/Python-2.7.11/:$PATH
-#setenv PYTHONPATH $HOME2/python/Python-2.7.11
-#setenv PATH $HOME/.local/bin:$PATH
-#setenv PATH $HOME2/python3/Python-3.8.0a1/:$PATH
-#setenv PATH $HOME/.local/usr/local/bin/:$PATH
-#setenv PATH $HOME/.local/usr/local/share/vim/vim81:$PATH
-setenv PATH $HOME/.local/bin:$PATH
-setenv PATH /tools/apps/local/vim/latest/bin:$PATH
-setenv PATH /projects/CYW55560/work/scripts:$PATH
-setenv PATH /projects/CYW55560/work/scripts/keep_copy_script:$PATH
-setenv PATH $HOME/scripts:$PATH
-
 setenv CDSVER INCISIVE15.20.042
-setenv PREFIX $HOME2/usr
-setenv PKG_CONFIG_PATH $PREFIX/lib/pkgconfig
-setenv PKG_CONFIG_PATH /usr/share/pkgconfig/:$PKG_CONFIG_PATH
-setenv h2 "/projects/CYW55560/users/ansn"
-setenv h2b "/projects/CYW55560/"
+########################################
+# path
+########################################
+  setenv PATH $HOME2/.local/bin:$PATH
+  setenv PATH $HOME/.local/bin:$PATH
+  setenv PATH /tools/apps/local/vim/latest/bin:$PATH
+  setenv PATH /projects/CYW55560/work/scripts:$PATH
+  setenv PATH /projects/CYW55560/work/scripts/keep_copy_script:$PATH
+  setenv PATH $HOME/scripts:$PATH
+  #setenv PATH $HOME2/python/Python-2.7.11/:$PATH
+  #setenv PYTHONPATH $HOME2/python/Python-2.7.11
+  #setenv PATH $HOME2/python3/Python-3.8.0a1/:$PATH
+  #setenv PATH $HOME/.local/usr/local/bin/:$PATH
+  #setenv PATH $HOME/.local/usr/local/share/vim/vim81:$PATH
+
+  # File Path vars
+    setenv h2 "/projects/CYW55560/users/ansn"
+    setenv h2b "/projects/CYW55560/"
+
+  # Misc
+    setenv PREFIX $HOME2/usr
+    setenv PKG_CONFIG_PATH $PREFIX/lib/pkgconfig
+    setenv PKG_CONFIG_PATH /usr/share/pkgconfig/:$PKG_CONFIG_PATH
 
 #######################################
 #PERSONAL CUSTOMIZATION BELOW THIS LINE
 #######################################
 #alias lg ".local/usr/local/bin/gvim"
+alias vi '\vim'
 alias vim "gvim -v"
 #alias python "/projects/work/ansn/python/Python-2.7.11/python"
 alias tm  "~/.local/bin/tmux"
@@ -113,22 +114,16 @@ alias test 'gmake RTL_TOOL=ncsim COMP64=1 '
 #set prompt="%{\033[1;4;31m%}%m%{\033[0;31m%}%{\033[1;31m%}: %{\033[4;32m%}%~ \%%{\033[0m%} "
 #set prompt="%{\033[1;4;32m%}%m%{\033[0;32m%}%{\033[1;32m%}: %{\033[4;31m%}%~ \%%{\033[0m%} "
 #set prompt="%{\033[1;32m%}[ %{\033[4;31m%}%~ \]%{\033[0m%} "
-set prompt="%{\033[1;31m%}[ %{\033[4;32m%} `hostname` @ %~ %{\033[1;31m%}] \n%{\033[4;36m%}--> %{\033[0m%} "
-set     red="%{\033[1;31m%}"
-set   green="%{\033[0;32m%}"
-set  yellow="%{\033[1;33m%}"
-set    blue="%{\033[1;34m%}"
-set magenta="%{\033[1;35m%}"
-set    cyan="%{\033[1;36m%}"
-set   white="%{\033[0;37m%}"
-set     end="%{\033[0m%}" # This is needed at the end... :(
 
-		set prompt="${yellow}#\!:${red}[ ${white}%m ${red}] [ ${blue}%~ ${red}] \n ${green}>>> ${end} "
-#Set vi mode for prompt in TCSH.tnx smah :)
-bindkey -e
-#set color
-#setenv GREP_OPTIONS '--color=auto'; 
-#setenv GREP_COLOR '00;38;5;226'; 
+################################################################################
+# Prompt
+################################################################################
+set prompt="%{\033[1;31m%}[ %{\033[4;32m%} `hostname` @ %~ %{\033[1;31m%}] \n%{\033[4;36m%}--> %{\033[0m%} "
+unalias precmd
+alias precmd 'echo -n "\033]0;`pwd | rev | cut -d/ -f1,2,3 | rev`\a";source ~/setPrompt.csh'
+bindkey -e # Set vi mode for prompt in TCSH
+alias src "source ~/.cshrc"
+
 ###########ENDOFMOD#####
 set filec
 set autolist
@@ -145,7 +140,6 @@ set complete = enhance
 #set MHOME = "/home/smah"
 #source $MHOME/cdl_cshrc
 
-alias precmd 'echo -n "\033]0;`pwd | rev | cut -d/ -f1,2 | rev`\a"'
 
 source ~/.alias
 #########TEMPORARY DIRECTORY SC########
@@ -160,7 +154,6 @@ alias gido "git difftool \!:1^ \!:1"
 alias mgiti "bsub -I mgit clone wlangit@wlangit.aus.cypress.com:\!:1/\!:1 \!:2"
 #########################TMUX related$$$$$$$$$$
 alias tma "~/.local/bin/tmux attach-session -t"
-alias src "source ~/.cshrc"
 unsetenv GREP_OPTIONS
 unsetenv GREP_COLOR
 alias grep "grep --color=auto"
@@ -183,13 +176,13 @@ alias compare "git stash && clob && gf && keep cp && git stash apply && clob && 
 ################### Hatchet2 specific ############################
 alias tessent_vis 'cd /projects/CYW55560/users/ansn/Tessent_top; b128 tessent -shell  -tesvis -dof run_tessent -log logfiles/1.log -replace'
 
-######################################
+########################################################################
 # gf for spyglass  
-######################################
+########################################################################
 alias gfspgl 'set wd=`pwd`;bsub -I -q normal_35 gmake file_list FILELIST_PREFIX=`dirname $wd` | & tee gfspg.log'
 alias gfm '~/scripts/mail-after gf'
 alias gncfm '~/scripts/mail-after gncf'
-alias open_spy 'b128 gmake RTL_TOOL=spyglass configsim.gui &'
+alias open_spy 'b128 gmake COMP64=1 RTL_TOOL=spyglass configsim.gui &'
 alias gpsy 'bsub -I gmake RTL_TOOL=spyglass compile SPYGLASS_GOALS=initial_rtl/lint/lint_rtl | & tee gspy.log'
 alias gpsycdc 'b128 make compile RTL_TOOL=spyglass SPYGLASS_GOALS=initial_rtl/cdc/clock_reset_integrity,initial_rtl/cdc/cdc_verify_struct | & tee gspycdc.log'
 alias lic_syn 'lmstat -a -c /proj/lic_vault/golden/lic_vault/snpslmd-aus-prod-wan/license.dat'
@@ -241,3 +234,4 @@ set q = "/tools/apps/mentor/questasim_10.7e_2/questasim/bin"
 # Proxy settings to access internet
 setenv http_proxy corp-webw105.cysemi.com:74 
 setenv https_proxy corp-webw105.cysemi.com:74 
+
