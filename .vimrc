@@ -19,13 +19,17 @@
   set title
   set titlelen=100
   set mouse=a " Providing mouse functionality in vim
-  set rnu " Relative line numbering
+  " set rnu " Relative line numbering
   set colorcolumn=85
   set cmdheight=1
+  set wrap
   " Indendation related :
     set cindent
-    set tabstop=2 
-    set sw=2
+    "set tabstop=2 
+    "set sw=2
+    "set expandtab
+    set softtabstop=4
+    set shiftwidth=4
     set expandtab
     set guioptions+=c
 
@@ -61,7 +65,7 @@
   noremap  <C-S>          :update<CR>
   vnoremap  <C-S>         <C-C>:update<CR>
   inoremap  <C-S>         <C-O>:update<CR>
-  inoremap jj <Esc>
+  inoremap jk <Esc>
   inoremap <C-j> <Backspace> " Insert mode backspace mapping
   nmap <leader>w :w!<cr> " Fast saving
   nmap <leader>i :set ic!<cr>
@@ -113,8 +117,8 @@
   " For vim version > 8.0
     command! T :terminal
   " Useful insert-mode mappings
-    :inoremap ( ()<Esc>i
-    :inoremap [ []<Esc>i
+    :inoremap (( ()<Esc>i
+    :inoremap [[ []<Esc>i
     :inoremap {{ {}<ESC>i
     :inoremap {<CR> {<CR>}<Esc>ko
   " Navigating through files quickly
@@ -282,3 +286,14 @@
         colorscheme gruvbox " color scheme
         se bg=dark
     " endif
+    
+""""""""""""""""""""""""""""""""""""""""
+" Adding better line indendation
+""""""""""""""""""""""""""""""""""""""""
+if has("patch-7.4.354")
+    " Indents word-wrapped lines as much as the 'parent' line
+    set breakindent
+    " Ensures word-wrap does not split words
+    set formatoptions=l
+    set lbr
+endif
