@@ -69,6 +69,8 @@
   inoremap <C-j> <Backspace> " Insert mode backspace mapping
   nmap <leader>w :w!<cr> " Fast saving
   nmap <leader>i :set ic!<cr>
+  " quick wrapping for vimdiffs etc. works on complete buffers on a window
+      nmap <leader>r :windo set wrap<CR>
   " because they are too far to reach
     map B ^ 
     map E $
@@ -128,7 +130,7 @@
 """"""""""""""""""""""""""""""""""""""""  
 " VUNDLE
 """"""""""""""""""""""""""""""""""""""""  
-  so ~/.vim/plugins.vim 
+  " so ~/.vim/plugins.vim 
   filetype off
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin()
