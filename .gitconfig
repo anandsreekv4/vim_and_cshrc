@@ -1,0 +1,52 @@
+; git config --global --unset http.sslVerify
+[user]
+	name = Anand S
+	email = ansn@cypress.com
+[push]
+    default = current
+
+
+
+
+[diff "xlscsv"]
+  textconv = /home/pjr/bin/xls2csv.sh
+
+[difftool]
+  prompt = false
+[pull]
+    rebase = true
+[alias]
+    co = checkout
+    st = status
+    lol = log --graph --decorate --abbrev-commit --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+    lola = log --graph --decorate --abbrev-commit --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --all
+    lor = log --graph --decorate --abbrev-commit --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=relative
+    auth = log --pretty=format:"%h%x09%an%x09%ad%x09%s"
+    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+    do = difftool ${1}^ ${1} 
+    ls = ls-files
+[core]
+    pager = /usr/bin/less
+[diff]
+    tool = gvimdiff
+	submodule = log
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+[apply]
+    whitespace = nowarn
+[color]
+    ui = true
+	diff = auto
+[log]
+    decorate = full
+[branch]
+    autosetuprebase = always
+; HTTP
+;[http]
+;	sslVerify = false
+;[http "https://github.com/anandsreekv4/vim_and_cshrc.git/"]
+;	sslVerify
+;	sslVersion = tlsv1.0
+;	cookieFile = /tmp/cookie.txt
