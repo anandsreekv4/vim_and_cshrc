@@ -68,9 +68,9 @@
   inoremap jk <Esc>
   inoremap <C-j> <Backspace> " Insert mode backspace mapping
   nmap <leader>w :w!<cr> " Fast saving
-  nmap <leader>i :set ic!<cr>
+  nmap <leader><leader>i :set ic!<cr>
   " quick wrapping for vimdiffs etc. works on complete buffers on a window
-      nmap <leader>r :windo set wrap<CR>
+      nmap <leader><leader>r :windo set wrap<CR>
   " because they are too far to reach
     map B ^ 
     map E $
@@ -78,6 +78,7 @@
     nnoremap <Leader>c :let @*=expand('%:p')<CR>
     nnoremap <Leader>d :let @*=expand('%:t:r')<CR>
     nnoremap <leader>h :cd %:p:h<CR> 
+
   " Related to tabs
     nnoremap tk :tabnext<cr>
     nnoremap tj :tabprev<cr>
@@ -235,6 +236,19 @@
     " au Syntax * RainbowParenthesesLoadRound
     " au Syntax * RainbowParenthesesLoadSquare
     " au Syntax * RainbowParenthesesLoadBraces
+  " Ranger 
+    " Need to run on an external terminal for GVim.
+    let g:ranger_terminal = 'xfce-terminal -e'
+    " Basic Mappings
+        map <leader>rr :RangerEdit<cr>
+        map <leader>rv :RangerVSplit<cr>
+        map <leader>rs :RangerSplit<cr>
+        map <leader>rt :RangerTab<cr>
+        map <leader>ri :RangerInsert<cr>
+        map <leader>ra :RangerAppend<cr>
+        map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+        map <leader>rd :RangerCD<cr>
+        map <leader>rld :RangerLCD<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Misc
