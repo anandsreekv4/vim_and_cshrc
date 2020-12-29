@@ -1,3 +1,4 @@
+""bla
 "let $VIM = $HOME . "/vim81/usr/local/"
 "let $VIMRUNTIME = $HOME . "/vim81/usr/local/share/vim/vim81"
 "set runtimepath^=$VIMRUNTIME
